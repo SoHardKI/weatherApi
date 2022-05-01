@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weather>
+ <Wind_speed>5.14</Wind_speed>
+ <Temperature>28.44</Temperature>
+ <Main>Clouds</Main>
+ <Feels_like>30.38</Feels_like>
+ <Wind_direction>100</Wind_direction>
+ <Pressure>1018</Pressure>
+</weather>

@@ -1,0 +1,26 @@
+version: "3.6"
+services:
+  php-fpm:
+    image: webdevops/php-dev:7.4
+    hostname: php-fpm
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    environment:
+      PHP_MEMORY_LIMIT: -1
+  nginx:
+    image: webdevops/nginx
+    hostname: nginx
+    restart: unless-stopped
+    environment:
+      WEB_DOCUMENT_ROOT: /var/www/public
+      WEB_DOCUMENT_INDEX: index.php
+      WEB_PHP_SOCKET: php-fpm:9000
+    ports:
+      - 127.0.0.1:80:80
+    volumes:
+      - ./:/var/www
+      - "./volumes/nginx/logs:/var/log/nginx/"
+    depends_on:
+      - php-fpm
